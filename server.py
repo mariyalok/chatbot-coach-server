@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
-import simplejson
+import simplejson as json
 
 hostName = "localhost"
 hostPort = 9000
@@ -16,15 +16,13 @@ class MyServer(BaseHTTPRequestHandler):
 
     def do_POST(self):
         self.send_response(200)
-        self.send_header("Content-type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
-        self.wfile.write(bytes("{'Cake': '5'}", "utf-8"))
 
-        data = simplejson.loads(self.data_string)
+        data = json.loads(self.data_string)
         print ("{}".format(data))
-        self.wfile.write(bytes("{'wow': 'okay'}", "utf-8"))
+        self.wfile.write(bytes(json.dumps("{}".format(data)), "utf-8"))
         return
 
 myServer = HTTPServer((hostName, hostPort), MyServer)
