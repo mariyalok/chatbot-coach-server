@@ -2,8 +2,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 import simplejson as json
 
-hostName = "localhost"
-hostPort = 9000
+hostName = "0.0.0.0"
+hostPort = 8000
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -21,7 +21,7 @@ class MyServer(BaseHTTPRequestHandler):
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
 
         data = json.loads(self.data_string)
-        print ("{}".format(data))
+        print ("Recieved: {} at {}".format(data, time.asctime()))
         self.wfile.write(bytes(json.dumps("{}".format(data)), "utf-8"))
         return
 
