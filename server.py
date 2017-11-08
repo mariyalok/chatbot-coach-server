@@ -7,12 +7,7 @@ hostPort = 8000
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes("<html><head><title>Gym-Chat-Bot</title></head>", "utf-8"))
-        self.wfile.write(bytes("<body><form method=\"post\"><input type=\"submit\"> </form>", "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
+        self.send_response(401)
 
     def do_POST(self):
         self.send_response(200)
