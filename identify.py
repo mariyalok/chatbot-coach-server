@@ -37,10 +37,10 @@ for word in msgList:
 	if matchCategory(word) in keyWords:
 		# Add word to dict under category
 		#
-		keyWords[check(word)].append(word)
+		keyWords[matchCategory(word)].append(word)
 	else:
 		# Category doesnt exist so create it and assign first word
 		#
-		keyWords[check(word)] = [word]
+		keyWords[matchCategory(word)] = [word]
 
-print(dealwith)
+print(keyWords)
