@@ -13,11 +13,12 @@ class MyServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
-        self.data_string = self.rfile.read(int(self.headers['Content-Length']))
+        self.data_string = self.rfile.read(int(self.headers["Content-Length"]))
 
         data = json.loads(self.data_string)
+        JSONstr = str(data).replace("'", '"').replace('\\"', "'").replace("\\'", "'").replace(': None', ': ""')
         print ("Recieved: {} at {}".format(data, time.asctime()))
-        self.wfile.write(bytes(json.dumps("{}".format(data)), "utf-8"))
+        self.wfile.write(bytes(json.dumps(JSONstr), "utf-8"))
         return
 
 myServer = HTTPServer((hostName, hostPort), MyServer)
