@@ -2,9 +2,9 @@
 
 #Defining of lists, strength & conditioning.
 
-conditioningList = ['treadmill','bike','cross trainer','rowing machine']
+conditioningList = ['treadmill','bike','cross trainer','rowing machine','skipping']
 
-strenghtList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
+strenghtList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest','deltoids','delts','abs','abdominals','lats','obliques','']
 
 
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
