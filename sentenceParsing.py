@@ -1,40 +1,48 @@
 """Sentence Parsing code"""
 
-#Defining of lists and dictionaries, strength & conditioning.
+#Defining of lists, strength & conditioning.
 
-highList = ['treadmill','bike','cross trainer','rowing machine']
-medList = ['treadmill','bike','cross trainer','rowing machine']
-lowList = ['treadmill','bike','cross trainer']
-intervalList = ['bike','cross trainer','rowing machine']
+conditioningList = ['treadmill','bike','cross trainer','rowing machine']
 
-cardioDictionary = {'high intensity':highList,'medium intensity':medList,'low intensity':lowList,'interval training':intervalList}
-
-
-
-
-staticList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
-explosiveList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
-dynamicList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
-enduranceList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
-
-strengthDictionary = {'static':staticList,'explosive':explosiveList,'dynamic':dynamicList,'endurance':enduranceList}
-
-
-
-
-globalDictionary = {'cardio':cardioDictionary,'strength':strengthList}
-
+strenghtList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
 
 
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
 
+msg = input("Type a message: ")
 
-#Cardio identification
+keyWords = {}
 
-if 'cardio' in Input:
-    print("What type of Cardiovascular training would you like to do, your options are:\n ")
-    print("High intensity training\n ")
-    print("Medium intensity training\n ")   
-    print("Low intensity training\n ")
-    print("interval training\n ")
-if ('cardio' and 'high intensity') or 
+msgList = msg.split()
+
+def matchCategory(word):
+
+# Check if word matches any in Lists
+    if word[-1] == "s":
+        for x in conditioningList:
+		if word[0:-2] == x:
+			return "Cardio"
+
+	for x in strenghtList:
+		if word[0:-2] == x:
+			return "Strength"
+
+    else:
+	for x in conditioningList:
+		if word == x:
+			return "Cardio"
+
+	for x in strenghtList:
+		if word == x:
+			return "Strength"
+	return "N/a"
+
+for word in msgList:
+	if matchCategory(word) in keyWords:
+		keyWords[matchCategory(word)].append(word)
+	else:
+		keyWords[matchCategory(word)] = [word]
+
+print(keyWords)
+
+
