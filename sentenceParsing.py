@@ -43,26 +43,28 @@ def identifyOutput(msg):
         else:
             setKeyWords(matchCategory(word), word)
     return keyWords
-        
+
+#~~~~~functions for chris' side~~~~~#
+
 def getCardioList():
     return getKeyWords('Cardio')
-
+                                       #returns words from user input string based on cateogry
 def getStrengthList():
     return getKeyWords('Strength')
 
-def clearKeyWords():
+def clearKeyWords():                   #resets list from previous entries
     keyWords = {}
 
-def setKeyWords(key, value):
+def setKeyWords(key, value):           
     keyWords[key] = [value]
-    
+                                       #assigns keys and values to words in defined lists and adds them to a dictionary
 def addKeyWords(key, value):
     keyWords[key].append(value)
     
 def getKeyWords():
     return keyWords
-
+                                       #polymorphic function, can be returned
 def getKeyWords(key):
-    return keyWords(key)
+    return keyWords[key]
 
             
