@@ -47,13 +47,13 @@ def identifyOutput(msg):
 #~~~~~functions for chris' side~~~~~#
 
 def getCardioList():
-    return getKeyWords('Cardio')
+    return getKeyWord('Cardio')
                                        #returns words from user input string based on cateogry
 def getStrengthList():
-    return getKeyWords('Strength')
+    return getKeyWord('Strength')
 
 def clearKeyWords():                   #resets list from previous entries
-    keyWords = {}
+    keyWords.clear()
 
 def setKeyWords(key, value):           
     keyWords[key] = [value]
@@ -61,10 +61,10 @@ def setKeyWords(key, value):
 def addKeyWords(key, value):
     keyWords[key].append(value)
     
-def getKeyWords():
+def getKeyWord():
     return keyWords
                                        #polymorphic function, can return all keyWords or specific based key
-def getKeyWords(key):
+def getKeyWord(key):
     return keyWords[key]
 
             
