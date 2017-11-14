@@ -10,10 +10,8 @@ strengthList = ['core','back','shoulder','arm','glute','calve','quadracep','ches
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
 
 
-keyWords = {}
-
 def matchCategory(word):
-    """Users' string is input, string searched for specific words, those words are returned as output"""
+    """User string is input, string searched for specific words, outputs categories words associated with"""
 
     if word[-1] == "s":
         for x in conditioningList:      #removes plural 's' from input
@@ -35,7 +33,8 @@ def matchCategory(word):
     return "N/a"
 
 def identifyOutput(msg):
-    """input is output from 'matchCategory' function, input is analysed and sorted into lists based on strengthList & conditioningList"""
+    """input is string, output is dictionary of words associated with categories"""
+    keywords = {}
     msgList = msg.lower().split()
     for word in msgList:
         if matchCategory(word) in keyWords:
