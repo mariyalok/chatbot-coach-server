@@ -4,45 +4,43 @@
 
 conditioningList = ['treadmill','bike','cross trainer','rowing machine','skipping']
 
-strenghtList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest','deltoids','delts','abs','abdominals','lats','obliques','']
+strengthList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest','deltoids','delts','abs','abdominals','lats','obliques','']
 
 
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
 
-msg = input("Type a message: ")
 
 keyWords = {}
 
-msgList = msg.split()
-
 def matchCategory(word):
+    """Users' string is input, string searched for specific words, those words are returned as output"""
 
-# Check if word matches any in Lists
     if word[-1] == "s":
-        for x in conditioningList:
-		if word[0:-2] == x:
-			return "Cardio"
+        for x in conditioningList:      #removes plural 's' from input
+            if word[0:-2] == x:
+                return "Cardio"
 
-	for x in strenghtList:
-		if word[0:-2] == x:
-			return "Strength"
+        for x in strengthList:
+            if word[0:-2] == x:
+                return "Strength"
 
     else:
-	for x in conditioningList:
-		if word == x:
-			return "Cardio"
+        for x in conditioningList:      #no plural then it is returned anyway
+            if word == x:
+                return "Cardio"
 
-	for x in strenghtList:
-		if word == x:
-			return "Strength"
+        for x in strengthList:
+            if word == x:
+                return "Strength"
 	return "N/a"
 
-for word in msgList:
-	if matchCategory(word) in keyWords:
-		keyWords[matchCategory(word)].append(word)
-	else:
-		keyWords[matchCategory(word)] = [word]
-
-print(keyWords)
-
-
+def identityOutput(msg):
+    """input is output from 'matchCategory' function, input is analysed and sorted into lists based on strengthList & conditioningList"""
+    msgList = msg.split()
+    for word in msgList:
+        if matchCategory(word) in keyWords:
+            keyWords[matchCategory(word)].append(word)
+        else:
+            keyWords[matchCategory(word)] = [word]
+            return keyWords
+            
