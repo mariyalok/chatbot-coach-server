@@ -9,7 +9,7 @@ strengthList = ['core','back','shoulder','arm','glute','calve','quadracep','ches
 
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
 
-keywords = {}
+keyWords = {}
 
 def matchCategory(word):
     """User string is input, string searched for specific words, outputs categories words associated with"""
