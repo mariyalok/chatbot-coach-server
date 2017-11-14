@@ -16,11 +16,11 @@ def matchCategory(word):
 
     if word[-1] == "s":
         for x in conditioningList:      #removes plural 's' from input
-            if word[0:-2] == x:
+            if word[0:-1]== x:
                 return "Cardio"
 
         for x in strengthList:
-            if word[0:-2] == x:
+            if word[0:-1]== x:
                 return "Strength"
 
     else:
@@ -63,7 +63,7 @@ def addKeyWords(key, value):
     
 def getKeyWords():
     return keyWords
-                                       #polymorphic function, can be returned
+                                       #polymorphic function, can return all keyWords or specific based key
 def getKeyWords(key):
     return keyWords[key]
 
