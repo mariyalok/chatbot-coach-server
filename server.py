@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 import simplejson as json
+from sentenceParsing import *
 
 hostName = "0.0.0.0"
 hostPort = 8000
@@ -16,8 +17,10 @@ class MyServer(BaseHTTPRequestHandler):
         self.data_string = self.rfile.read(int(self.headers["Content-Length"]))
 
         data = json.loads(self.data_string)
-        JSONstr = str(data).replace("'", '"').replace('\\"', "'").replace("\\'", "'").replace(': None', ': ""')
         print ("Recieved: {} at {}".format(data, time.asctime()))
+        identifyOutput(data["message"])
+        data["message"] = getKeyWord("Strength") + getKeyWord("Cardio") 
+        JSONstr = str(data).replace("'", '"').replace('\\"', "'").replace("\\'", "'").replace(': None', ': ""')
         self.wfile.write(bytes(json.dumps(JSONstr), "utf-8"))
         return
 
