@@ -34,7 +34,7 @@ def matchCategory(word):
                 return "Strength"
     return "N/a"
 
-def identityOutput(msg):
+def identifyOutput(msg):
     """input is output from 'matchCategory' function, input is analysed and sorted into lists based on strengthList & conditioningList"""
     msgList = msg.lower().split()
     for word in msgList:
