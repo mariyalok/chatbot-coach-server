@@ -9,6 +9,7 @@ strengthList = ['core','back','shoulder','arm','glute','calve','quadracep','ches
 
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
 
+keywords = {}
 
 def matchCategory(word):
     """User string is input, string searched for specific words, outputs categories words associated with"""
@@ -34,12 +35,34 @@ def matchCategory(word):
 
 def identifyOutput(msg):
     """input is string, output is dictionary of words associated with categories"""
-    keywords = {}
+    clearKeyWords()
     msgList = msg.lower().split()
     for word in msgList:
         if matchCategory(word) in keyWords:
-            keyWords[matchCategory(word)].append(word)
+            addKeyWords(matchCategory(word), word)
         else:
-            keyWords[matchCategory(word)] = [word]
-            return keyWords
+            setKeyWords(matchCategory(word), word)
+    return keyWords
+        
+def getCardioList():
+    return getKeyWords('Cardio')
+
+def getStrengthList():
+    return getKeyWords('Strength')
+
+def clearKeyWords():
+    keyWords = {}
+
+def setKeyWords(key, value):
+    keyWords[key] = [value]
+    
+def addKeyWords(key, value):
+    keyWords[key].append(value)
+    
+def getKeyWords():
+    return keyWords
+
+def getKeyWords(key):
+    return keyWords(key)
+
             
