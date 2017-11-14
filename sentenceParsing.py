@@ -4,7 +4,7 @@
 
 conditioningList = ['treadmill','bike','cross trainer','rowing machine','skipping']
 
-strengthList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest','deltoids','delts','abs','abdominals','lats','obliques','']
+strengthList = ['core','back','shoulder','arm','glute','calve','quadracep','chest','deltoid','delt','ab','abdominal','lat','oblique']
 
 
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
@@ -32,11 +32,11 @@ def matchCategory(word):
         for x in strengthList:
             if word == x:
                 return "Strength"
-	return "N/a"
+    return "N/a"
 
 def identityOutput(msg):
     """input is output from 'matchCategory' function, input is analysed and sorted into lists based on strengthList & conditioningList"""
-    msgList = msg.split()
+    msgList = msg.lower().split()
     for word in msgList:
         if matchCategory(word) in keyWords:
             keyWords[matchCategory(word)].append(word)
