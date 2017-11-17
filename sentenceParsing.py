@@ -44,6 +44,14 @@ def identifyOutput(msg):
             setKeyWords(matchCategory(word), word)
     return keyWords
 
+def returnOutput():
+    output = []
+    if "Cardio" in keyWords:
+        output = output + getCardioList()
+    if "Strength" in keyWords:
+        output = output + getStrengthList()
+    return output
+
 #~~~~~functions for chris' side~~~~~#
 
 def getCardioList():
