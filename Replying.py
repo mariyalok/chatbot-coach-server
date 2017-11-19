@@ -24,17 +24,34 @@ def exercisesToDict():
 			muscle_exercises[muscle].append(exercise)
 		else:
 		# Create new list and assign first exercise
-			muscle_exercises[muscle] = [exercise] 
+			muscle_exercises[muscle] = [exercise]
 
-exercisesToDict()
+def generateReply(muscle):
+        reply = muscle #input("What part of the body would you like to train?")
+        found = False
+        replyLower = reply.lower()
 
-temp_list = []
-while len(temp_list) < 5:
-	choice = random.choice(muscle_exercises["biceps"])
-	if choice in temp_list:
-		continue
-	else: 
-		temp_list.append(choice)
+        for k in muscle_exercises.keys():
+                if(replyLower == k):
+                        found = True
+                        temp_list = []
+                        while len(temp_list) < 5:
+                                choice = random.choice(muscle_exercises[replyLower])
+                                if choice in temp_list:
+                                        continue
+                                else: 
+                                        temp_list.append(choice)
+                
 
-for x in temp_list:
-	print ('{}'.format(x))
+                        print("You could try these exercises for {}:".format(reply))
+
+                        for x in temp_list:
+                                print ('{}'.format(x))
+                                
+                        break
+##                else:
+##                        found = False
+                        
+        if found == False:
+                print("I'm sorry. I do not have any exercises for: {}".format(reply)
+
