@@ -4,7 +4,7 @@
 
 conditioningList = ['treadmill','bike','cross trainer','rowing machine','skipping']
 
-strengthList = ['core','back','shoulder','arm','glute','calve','quadracep','chest','deltoid','delt','ab','abdominal','lat','oblique']
+strengthList = ['core','back','shoulder','arm','tricep','bicep','glute','calve','calf','quadracep','quad','chest','deltoid','delt','ab','abdominal','lat','oblique','trap','trapezium']
 
 
 #~~~~~~~~~~# identification of input #~~~~~~~~~~#
@@ -63,16 +63,14 @@ def getStrengthList():
 def clearKeyWords():                   #resets list from previous entries
     keyWords.clear()
 
-def setKeyWords(key, value):           
+def setKeyWords(key, value):
     keyWords[key] = [value]
                                        #assigns keys and values to words in defined lists and adds them to a dictionary
 def addKeyWords(key, value):
     keyWords[key].append(value)
-    
+
 def getKeyWord():
     return keyWords
                                        #polymorphic function, can return all keyWords or specific based key
 def getKeyWord(key):
     return keyWords[key]
-
-            
