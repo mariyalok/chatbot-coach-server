@@ -1,6 +1,7 @@
 import random
 
 muscle_exercises = {}
+depth = 0
 
 def greeting() :
     greetings = ["Hi!" , "Whazzuup!" , "Hello!" , "Hey dude/dudette!"]
@@ -9,7 +10,7 @@ def greeting() :
     return random.choice(greetings), GymCoachGreeting
 #print(random.choice(howAre))
 
-def exercisesToDict() :
+def exercisesToDict():
     """Reads in a file, returns dictionary
         with muscles as key and exercises as
         values"""
@@ -30,41 +31,28 @@ def exercisesToDict() :
 def handleReply(muscleList, depth=0):
     #New question
     if depth == 0:
-        generatePrimaryReply(muscleList)
+        return(generatePrimaryReply(muscleList))
     #Answer too vague, needs more infomation
     else:
-        generateSecondaryReply(muscleList)
+        return(generateSecondaryReply(muscleList))
 
 def generatePrimaryReply(muscleList):
+    """Takes in a list of muscles that the user has inputed
+    and returns a statement for an individual exercise or
+    queries the user for an individual exercise"""
     for muscle in muscleList:
         reply = muscle
-        found = False
         replyLower = reply.lower()
+        if replyLower in muscle_exercises.keys():
+            returnString = "You could try these exercises!:<br />"
 
-        for k in muscle_exercises.keys():
-            if(replyLower == k):
-                found = True
-                temp_list = []
-                while len(temp_list) < 5:
-                    choice = random.choice(muscle_exercises[replyLower])
-                    if choice in temp_list:
-                        continue
-                    else:
-                        temp_list.append(choice)
-
-
-                        print("You could try these exercises for {}:".format(reply))
-
-                        for x in temp_list:
-                            print ('{}'.format(x))
-
-                            break
-
-
-            if found == False:
-                print("I'm sorry. I do not have any exercises for: {}".format(reply))
+            #Add the exercises and a break to the end of the message string
+            for exercise in muscle_exercises[replyLower]:
+                returnString += exercise + "<br />"
+            return returnString
 
 def generateSecondaryReply(muscleList):
+    """TO DO"""
     return 0
 
 def motivationQuote():
@@ -73,6 +61,6 @@ def motivationQuote():
     return random.choice(quote)
     return random.choice(quote)
 
-greeting()
-exercisesToDict()
-motivationQuote()
+#greeting()
+#exercisesToDict()
+#motivationQuote()
