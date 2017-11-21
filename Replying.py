@@ -13,7 +13,7 @@ def exercisesToDict():
     """Reads in a file, returns dictionary
         with muscles as key and exercises as
         values"""
-    f=open("exercises.txt","r")
+    f=open("StrengthExercises.txt","r")
     file_string = f.read()
     file_list = file_string.splitlines()
     for line in file_list:
@@ -40,31 +40,38 @@ def generatePrimaryReply(muscleList):
         reply = muscle
         found = False
         replyLower = reply.lower()
-        
+
         for k in muscle_exercises.keys():
             if(replyLower == k):
                 found = True
-                    temp_list = []
-                    while len(temp_list) < 5:
-                        choice = random.choice(muscle_exercises[replyLower])
-                        if choice in temp_list:
-                            continue
-                                else:
-                                    temp_list.append(choice)
-                    
-                        
+                temp_list = []
+                while len(temp_list) < 5:
+                    choice = random.choice(muscle_exercises[replyLower])
+                    if choice in temp_list:
+                        continue
+                    else:
+                        temp_list.append(choice)
+
+
                         print("You could try these exercises for {}:".format(reply))
-                        
+
                         for x in temp_list:
                             print ('{}'.format(x))
-                        
-                                break
-    
-    
-        if found == False:
-            print("I'm sorry. I do not have any exercises for: {}".format(reply))
+
+                            break
+
+
+            if found == False:
+                print("I'm sorry. I do not have any exercises for: {}".format(reply))
 
 def generateSecondaryReply(muscleList):
     return 0
 
+def motivationQuote():
+    quote = ["No pain no gain","You the man/woman","Hit it champ","Just do it!(copyright NIKE)"]
+    return random.choice(quote)
+    return random.choice(quote)
+
 greeting()
+exercisesToDict()
+motivationQuote()
