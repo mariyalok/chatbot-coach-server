@@ -3,17 +3,17 @@ import random
 muscle_exercises = {}
 
 def greeting() :
-    greetings=["Hi!","Whazzuup!","Hello!","Hey dude/dudette!"]
+    greetings = ["Hi!" , "Whazzuup!" , "Hello!" , "Hey dude/dudette!"]
     GymCoachGreeting="I'm your gym coach Ciri."
     #howAre=["How are you today?","Are you ready to achieve your best?"]
     return random.choice(greetings), GymCoachGreeting
 #print(random.choice(howAre))
 
-def exercisesToDict():
+def exercisesToDict() :
     """Reads in a file, returns dictionary
         with muscles as key and exercises as
         values"""
-    f=open("StrengthExercises.txt","r")
+    f=open("StrengthExercises.txt" , "r")
     file_string = f.read()
     file_list = file_string.splitlines()
     for line in file_list:
@@ -68,7 +68,8 @@ def generateSecondaryReply(muscleList):
     return 0
 
 def motivationQuote():
-    quote = ["No pain no gain","You the man/woman","Hit it champ","Just do it!(copyright NIKE)"]
+    quote = ["No pain, no gain!" , "You the man/woman!"
+    , "Hit it champ!" , "Just do it!(copyright NIKE)"]
     return random.choice(quote)
     return random.choice(quote)
 
