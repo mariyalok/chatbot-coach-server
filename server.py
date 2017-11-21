@@ -2,6 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 import simplejson as json
 from sentenceParsing import *
+from Replying import *
 
 # Accept all connections on port 8000
 #
@@ -9,6 +10,9 @@ hostName = "0.0.0.0"
 hostPort = 8000
 
 class MyServer(BaseHTTPRequestHandler):
+    
+    exercisesToDict()
+
     # Method is called when GET request is made
     def do_GET(self):
         # Deny GET method and return 401 unauthorised
@@ -33,7 +37,9 @@ class MyServer(BaseHTTPRequestHandler):
         # Take keywords from message recieved and
         # put them into a dict keyWords
         identifyOutput(data["message"])
-        data["message"] = returnOutput()
+        #print(exercise_Muscle)
+        data["message"] = handleReply(returnOutput())
+        #print(data["message"])
 
         # Format dictionary into acceptable JSON
         # format
