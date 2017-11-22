@@ -9,10 +9,7 @@ def replyToGreeting():
     return "Hello! I'm your personal trainer, Ciri."
 
 
-<<<<<<< HEAD
-=======
 ## Alex contributed
->>>>>>> 069a054acd14e7a4c0ea827f909220cc31f504bc
 def exercisesToDict():
     """Reads in a file, returns dictionary
         with muscles as key and exercises as
@@ -51,17 +48,10 @@ def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, 
 
     if exerciseList != False:
         if depth == 0:
-<<<<<<< HEAD
-            returnString += generatePrimaryReply(muscleList)
-        #Answer too vague, needs more infomation
-        else:
-            returnString += generateSecondaryReply(muscleList)
-=======
             returnString += generatePrimaryReply(muscleList) + "<br />"
         #Answer too vague, needs more infomation
         else:
             returnString += generateSecondaryReply(muscleList)) + "<br />"
->>>>>>> 069a054acd14e7a4c0ea827f909220cc31f504bc
 
     if calorieCount != False:
         """TO DO"""
@@ -70,13 +60,10 @@ def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, 
     if date != False:
         """TO DO"""
         continue
-<<<<<<< HEAD
 
     return returnString
 
-=======
 ## Chris and Alex contributed
->>>>>>> 069a054acd14e7a4c0ea827f909220cc31f504bc
 def generatePrimaryReply(muscleList):
     """Takes in a list of muscles that the user has inputed
     and returns a statement for an individual exercise or
@@ -90,16 +77,9 @@ def generatePrimaryReply(muscleList):
             #Add the exercises and a break to the end of the message string
             for exercise in muscle_exercises[replyLower]:
                 returnString += exercise + "<br />"
-<<<<<<< HEAD
-            return returnString
-
-def generateSecondaryReply(muscleList):
-    """TO DO"""
-    return 0
-
-=======
     returnString += "What exercises would you like me to add to your workout?"
     return returnString
+
 ## Chris and Alex contributed
 def generateSecondaryReply(exerciseList):
     """Input is list of exercises that have been
@@ -114,10 +94,8 @@ def generateSecondaryReply(exerciseList):
     return "Thank you"
 
 ## Alex contributed
->>>>>>> 069a054acd14e7a4c0ea827f909220cc31f504bc
 def motivationQuote():
-    quote = ["No pain, no gain!" , "You the man/woman!"
-    , "Hit it champ!" , "Just do it!(copyright NIKE)"]
+    quote = ["No pain, no gain!" , "You the man/woman!", "Hit it champ!" , "Just do it!(copyright NIKE)"]
     return random.choice(quote)
 
 #greeting()
