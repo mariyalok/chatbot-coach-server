@@ -8,7 +8,7 @@ workout = []
 def replyToGreeting():
 
 
-## Alex
+## Alex contributed
 def exercisesToDict():
     """Reads in a file, returns dictionary
         with muscles as key and exercises as
@@ -39,7 +39,7 @@ def exercisesToDict():
             cardio_exercises[intensity] = [exercise]
     f.close()
 
-
+## Chris, Alex, Angus contributed
 def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, depth=0):
     returnString = ""
     if greet=True:
@@ -59,7 +59,7 @@ def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, 
     if date != False:
         """TO DO"""
         continue
-## Chris and Alex
+## Chris and Alex contributed
 def generatePrimaryReply(muscleList):
     """Takes in a list of muscles that the user has inputed
     and returns a statement for an individual exercise or
@@ -75,7 +75,7 @@ def generatePrimaryReply(muscleList):
                 returnString += exercise + "<br />"
     returnString += "What exercises would you like me to add to your workout?"
     return returnString
-
+## Chris and Alex contributed
 def generateSecondaryReply(exerciseList):
     """Input is list of exercises that have been
        stated after primary reply,
@@ -88,7 +88,7 @@ def generateSecondaryReply(exerciseList):
         return motivationQuote()
     return "Thank you"
 
-## Alex
+## Alex contributed
 def motivationQuote():
     quote = ["No pain, no gain!" , "You the man/woman!"
     , "Hit it champ!" , "Just do it!(copyright NIKE)"]
