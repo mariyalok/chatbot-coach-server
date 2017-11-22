@@ -2,12 +2,22 @@
 
 #Defining of lists, strength & conditioning.
 
-conditioningList = ['treadmill','bike','cross trainer','rowing machine','skipping']
+conditioningList = ['treadmill','bike','cross trainer','rowing machine','skipping','eliptical','step machine']
 
 strengthList = ['core','back','shoulder','arm','tricep','bicep','glute','calve','calf','quadracep','quad','chest','deltoid','delt','ab','abdominal','lat','oblique','trap','trapezium']
 
+#~~~~~~~~~~# identification of greetings #~~~~~~~~~~#
 
-#~~~~~~~~~~# identification of input #~~~~~~~~~~#
+greetingList = ['hi','hello','sup','hey','chao','bonjour','whad up']
+
+def parseGreeting(msg):
+    for greeting in greetingList:
+        if greeting in msg:
+            return True
+        else:
+            return False
+
+#~~~~~~~~~~# identification of input of exercises #~~~~~~~~~~#
 
 keyWords = {}
 
@@ -24,7 +34,7 @@ def matchCategory(word):
                 return "Strength"
 
     else:
-        for x in conditioningList:      #no plural then it is returned anyway
+        for x in conditioningList:      #no plural then it is returned to either strength or conditioning
             if word == x:
                 return "Cardio"
 
@@ -38,19 +48,19 @@ def identifyOutput(msg):
     clearKeyWords()
     msgList = msg.lower().split()
     for word in msgList:
-        if matchCategory(word) in keyWords:
-            addKeyWords(matchCategory(word), word)
+        if matchCategory(word) in keyWords:              #adds the muscle group/training machine to a list
+            addKeyWords(matchCategory(word), word)       # if it is in either strengthList or conditioningList
         else:
             setKeyWords(matchCategory(word), word)
     return keyWords
 
 def returnOutput():
     output = []
-    if "Cardio" in keyWords:
+    if "Cardio" in keyWords:                             #Gives lists induvidually as output for transfer to Replying.py
         output = output + getCardioList()
     if "Strength" in keyWords:
         output = output + getStrengthList()
-    return output
+    return parseGreeting(),
 
 #~~~~~functions for chris' side~~~~~#
 
