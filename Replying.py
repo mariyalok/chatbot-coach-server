@@ -1,5 +1,6 @@
 import random
 
+cardio_exercises = {}
 muscle_exercises = {}
 depth = 0
 
@@ -24,6 +25,19 @@ def exercisesToDict():
         else:
             # Create new list and assign first exercise
             muscle_exercises[muscle] = [exercise]
+    f.close()
+    f=open("ConditioningExercises.txt", "r")
+    file_string = f.read()
+    file_list = file_string.splitlines()
+    for line in file_list:
+        temp_list = line.split(",")
+        intesity, exercise = temp_list[0], temp_list[1]
+        if intensity in cardio_exercises:
+            cardio_exercises[intensity].append(exercise)
+        else:
+            cardio_exercises[intensity] = [exercise]
+    f.close()
+
 
 def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, depth=0):
     returnString = ""
