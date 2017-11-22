@@ -3,6 +3,7 @@ import random
 cardio_exercises = {}
 muscle_exercises = {}
 depth = 0
+workout = []
 
 def replyToGreeting():
 
@@ -42,14 +43,14 @@ def exercisesToDict():
 def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, depth=0):
     returnString = ""
     if greet=True:
-        returnString += replyToGreeting()
+        returnString += replyToGreeting() + "<br />"
 
     if exerciseList != False:
         if depth == 0:
-            return(generatePrimaryReply(muscleList))
+            returnString += generatePrimaryReply(muscleList) + "<br />"
         #Answer too vague, needs more infomation
         else:
-            return(generateSecondaryReply(muscleList))
+            returnString += generateSecondaryReply(muscleList)) + "<br />"
 
     if calorieCount != False:
         """TO DO"""
@@ -72,11 +73,20 @@ def generatePrimaryReply(muscleList):
             #Add the exercises and a break to the end of the message string
             for exercise in muscle_exercises[replyLower]:
                 returnString += exercise + "<br />"
+    returnString += "What exercises would you like me to add to your workout?"
     return returnString
 
-def generateSecondaryReply(muscleList):
-    """TO DO"""
-    return 0
+def generateSecondaryReply(exerciseList):
+    """Input is list of exercises that have been
+       stated after primary reply,
+       Add the inputs as items in the list "Workout"
+       Set depth to 0; reseting the depth.
+    """
+    workout.append(exerciseList)
+    depth = 0
+    if len(workout) > 2:
+        return motivationQuote()
+    return "Thank you"
 
 ## Alex
 def motivationQuote():
