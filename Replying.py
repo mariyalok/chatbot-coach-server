@@ -3,12 +3,10 @@ import random
 muscle_exercises = {}
 depth = 0
 
-def greeting() :
-    greetings = ["Hi!" , "Whazzuup!" , "Hello!" , "Hey dude/dudette!"]
-    GymCoachGreeting="I'm your gym coach Ciri."
-    #howAre=["How are you today?","Are you ready to achieve your best?"]
-    return random.choice(greetings), GymCoachGreeting
-#print(random.choice(howAre))
+def replyToGreeting():
+
+
+
 
 def exercisesToDict():
     """Reads in a file, returns dictionary
@@ -28,13 +26,25 @@ def exercisesToDict():
             # Create new list and assign first exercise
             muscle_exercises[muscle] = [exercise]
 
-def handleReply(muscleList, depth=0):
-    #New question
-    if depth == 0:
-        return(generatePrimaryReply(muscleList))
-    #Answer too vague, needs more infomation
-    else:
-        return(generateSecondaryReply(muscleList))
+def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, depth=0):
+    returnString = ""
+    if greet=True:
+        returnString += replyToGreeting()
+
+    if exerciseList != False:
+        if depth == 0:
+            return(generatePrimaryReply(muscleList))
+        #Answer too vague, needs more infomation
+        else:
+            return(generateSecondaryReply(muscleList))
+
+    if calorieCount != False:
+        """TO DO"""
+        continue
+
+    if date != False:
+        """TO DO"""
+        continue
 
 def generatePrimaryReply(muscleList):
     """Takes in a list of muscles that the user has inputed
