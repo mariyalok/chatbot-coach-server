@@ -6,8 +6,7 @@ depth = 0
 def replyToGreeting():
 
 
-
-
+## Alex
 def exercisesToDict():
     """Reads in a file, returns dictionary
         with muscles as key and exercises as
@@ -45,26 +44,27 @@ def handleReply(greet=False, exerciseList=False,calorieCount=False, date=False, 
     if date != False:
         """TO DO"""
         continue
-
+## Chris and Alex
 def generatePrimaryReply(muscleList):
     """Takes in a list of muscles that the user has inputed
     and returns a statement for an individual exercise or
     queries the user for an individual exercise"""
+    returnString = "You could try these exercises!:<br />"
     for muscle in muscleList:
+        returnString += "<br />P{}:<br />".format(muscle)
         reply = muscle
         replyLower = reply.lower()
         if replyLower in muscle_exercises.keys():
-            returnString = "You could try these exercises!:<br />"
-
             #Add the exercises and a break to the end of the message string
             for exercise in muscle_exercises[replyLower]:
                 returnString += exercise + "<br />"
-            return returnString
+    return returnString
 
 def generateSecondaryReply(muscleList):
     """TO DO"""
     return 0
 
+## Alex
 def motivationQuote():
     quote = ["No pain, no gain!" , "You the man/woman!"
     , "Hit it champ!" , "Just do it!(copyright NIKE)"]
