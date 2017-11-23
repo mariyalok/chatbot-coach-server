@@ -5,9 +5,9 @@ tempList=[] #Temporary lists where all the data will be saved in the txt file.
 
 def generatePrimaryResponse(month,day): # Mariya & Antonio
     
-    if month in data_dict:# If the month is already in the dict it checks if the day is in it too
+    if month in data_dict:# If the month exists in the dict it checks if the day is in it too.
         if day in data_dict[month]:
-            pass # If there is already a day in the dict it skips it.
+            pass # If a day exsists in the dict it skips it.
         else:
             data_dict[month] = {str(day):0} #If not it adds it and adds hours as 0.
             
@@ -16,16 +16,16 @@ def generatePrimaryResponse(month,day): # Mariya & Antonio
         
         
     tempList.append(month) #Adds the month to the list to write it in the txt file.
-    tempList.append(str(day)) #Adds the day to the lsit to write it in the txt file.
+    tempList.append(str(day)) #Adds the day to the list to write it in the txt file.
     hour= input("How many hours did you work on that day?")#Joao
     return generateSecondaryResponse(hour)#Joao
     depth += 1
     
 
 def generateSecondaryResponse(hour):#Joao
-    data_dict[tempList[0]][tempList[1]] += hour # put the data(hours) in position data[0][1]
+    data_dict[tempList[0]][tempList[1]] += hour #Put the data(hours) in position data[0][1]
     depth = 0
-    tempList.clear() #clean the tempList created
+    tempList.clear() #To cleat the tempList created
     
 #Joao
 f=open('log.txt','w') # Opens the file,converts the list into a json string, writes on it and closes it
