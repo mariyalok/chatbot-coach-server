@@ -25,10 +25,10 @@ def generatePrimaryResponse(month,day): # Mariya & Antonio
 def generateSecondaryResponse(hour):#Joao
     data_dict[tempList[0]][tempList[1]] += hour #Put the data(hours) in position data[0][1]
     depth = 0
-    tempList.clear() #To cleat the tempList created
+    tempList.clear() #To clear the tempList created
     
 #Joao
-f=open('log.txt','w') # Opens the file,converts the list into a json string, writes on it and closes it
+f=open('log.txt','w') # Opens the file,converts the list into a json string, writes on it and closes it.
 f.write(json.dumps(data_dict))
 f.close()
 
