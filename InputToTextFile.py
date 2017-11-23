@@ -27,13 +27,10 @@ def generateSecondaryResponse(hour):#Joao
     depth = 0
     tempList.clear() #clean the tempList created
     
-   
-    
-
 #Joao
 f=open('log.txt','w') # Opens the file,converts the list into a json string, writes on it and closes it
 f.write(json.dumps(data_dict))
-f.closed
+f.close()
 
 
 
@@ -43,7 +40,4 @@ f=open('log.txt','r')# Opens the file, converts the string back into list, reads
 
 print(json.loads(f.read()))
 
-f.closed
-
-    
-    
+f.close()

@@ -1,40 +1,86 @@
 """Sentence Parsing code"""
 
-#Defining of lists and dictionaries, strength & conditioning.
+#Defining of lists, strength & conditioning.
 
-highList = ['treadmill','bike','cross trainer','rowing machine']
-medList = ['treadmill','bike','cross trainer','rowing machine']
-lowList = ['treadmill','bike','cross trainer']
-intervalList = ['bike','cross trainer','rowing machine']
+conditioningList = ['treadmill','bike','cross trainer','rowing machine','skipping','eliptical','step machine']
 
-cardioDictionary = {'high intensity':highList,'medium intensity':medList,'low intensity':lowList,'interval training':intervalList}
+strengthList = ['core','back','shoulder','arm','tricep','bicep','glute','calve','calf','quadracep','quad','chest','deltoid','delt','ab','abdominal','lat','oblique','trap','trapezium']
 
+#~~~~~~~~~~# identification of greetings #~~~~~~~~~~#
 
+greetingList = ['hi','hello','sup','hey','chao','bonjour','whad up']
 
+def parseGreeting(msg):
+    for greeting in greetingList:
+        if greeting in msg:
+            return True
+        else:
+            return False
 
-staticList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
-explosiveList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
-dynamicList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
-enduranceList = ['core','back','shoulders','arms','glutes','calves','quadraceps','chest']
+#~~~~~~~~~~# identification of input of exercises #~~~~~~~~~~#
 
-strengthDictionary = {'static':staticList,'explosive':explosiveList,'dynamic':dynamicList,'endurance':enduranceList}
+keyWords = {}
 
+def matchCategory(word):
+    """User string is input, string searched for specific words, outputs categories words associated with"""
 
+    if word[-1] == "s":
+        for x in conditioningList:      #removes plural 's' from input
+            if word[0:-1]== x:
+                return "Cardio"
 
+        for x in strengthList:
+            if word[0:-1]== x:
+                return "Strength"
 
-globalDictionary = {'cardio':cardioDictionary,'strength':strengthList}
+    else:
+        for x in conditioningList:      #no plural then it is returned to either strength or conditioning
+            if word == x:
+                return "Cardio"
 
+        for x in strengthList:
+            if word == x:
+                return "Strength"
+    return "N/a"
 
+def identifyOutput(msg):
+    """input is string, output is dictionary of words associated with categories"""
+    clearKeyWords()
+    msgList = msg.lower().split()
+    for word in msgList:
+        if matchCategory(word) in keyWords:              #adds the muscle group/training machine to a list
+            addKeyWords(matchCategory(word), word)       # if it is in either strengthList or conditioningList
+        else:
+            setKeyWords(matchCategory(word), word)
+    return keyWords
 
-#~~~~~~~~~~# identification of input #~~~~~~~~~~#
+def returnOutput():
+    output = []
+    if "Cardio" in keyWords:                             #Gives lists induvidually as output for transfer to Replying.py
+        output = output + getCardioList()
+    if "Strength" in keyWords:
+        output = output + getStrengthList()
+    return parseGreeting(),
 
+#~~~~~functions for chris' side~~~~~#
 
-#Cardio identification
+def getCardioList():
+    return getKeyWord('Cardio')
+                                       #returns words from user input string based on cateogry
+def getStrengthList():
+    return getKeyWord('Strength')
 
-if 'cardio' in Input:
-    print("What type of Cardiovascular training would you like to do, your options are:\n ")
-    print("High intensity training\n ")
-    print("Medium intensity training\n ")   
-    print("Low intensity training\n ")
-    print("interval training\n ")
-if ('cardio' and 'high intensity') or 
+def clearKeyWords():                   #resets list from previous entries
+    keyWords.clear()
+
+def setKeyWords(key, value):
+    keyWords[key] = [value]
+                                       #assigns keys and values to words in defined lists and adds them to a dictionary
+def addKeyWords(key, value):
+    keyWords[key].append(value)
+
+def getKeyWord():
+    return keyWords
+                                       #polymorphic function, can return all keyWords or specific based key
+def getKeyWord(key):
+    return keyWords[key]
